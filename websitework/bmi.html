@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: rgba(191, 116, 235, 0.5); /* Semi-transparent background */
+            background-image: url('bmi.jpg'); /* Add the background image */
+            background-size:contain;  /*Fit the image */
+            /*background-repeat: no-repeat; /* Prevent image repetition */
+            /*background-position: center/* Center the image */
+            border-bottom: 4px solid black;         
+            
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background: #e7f3ff;
+            border: 1px solid #b3d7ff;
+            border-radius: 5px;
+            color: #004085;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <label for="weight">Weight (in KGs):</label>
+        <input type="number" id="weight" placeholder="Enter your weight">
+        <label for="height">Height (in Metres):</label>
+        <input type="number" id="height" placeholder="Enter your height">
+        <button onclick="calculateBMI()">Calculate BMI</button>
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            // Get user input
+            var weight = parseFloat(document.getElementById("weight").value);
+            var height = parseFloat(document.getElementById("height").value);
+
+            // Validate input
+            if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+                alert("Please enter valid positive numbers for weight and height.");
+                return;
+            }
+
+            // Calculate BMI
+            var bmi = weight / (height * height);
+            bmi = Math.round(bmi);
+
+            // Determine BMI category
+            var resultText = "";
+            if (bmi < 18.5) {
+                resultText = "Your BMI is " + bmi + ", so you are underweight.";
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                resultText = "Your BMI is " + bmi + ", so you have a normal weight.";
+            } else if (bmi >= 25.5 && bmi <= 29.9) {
+                resultText = "Your BMI is " + bmi + ", so you are overweight. Start walking daily!";
+            } else if (bmi >= 30.0 && bmi <= 34.9) {
+                resultText = "Your BMI is " + bmi + ", so you are obese. Take more care!";
+            } else {
+                resultText = "Your BMI is " + bmi + ", so you are extremely obese.";
+            }
+
+            // Display the result
+            var resultDiv = document.getElementById("result");
+            resultDiv.style.display = "block";
+            resultDiv.textContent = resultText;
+        }
+    </script>
+</body>
+</html>
