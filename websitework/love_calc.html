@@ -1,39 +1,18 @@
-<!--// Love Calculator Game Advanced levels - Use if else
-/*
-var p1 = prompt("Enter Your Name");
-var p2 = prompt("Enter second person name to check your Love");
-var n = Math.random() * 100;
-n = Math.floor(n + 1);
-var resultText = "";
-if (n >= 70) {
-    alert("Hey "+p1+ " & " + p2 + " Your Love score is : "+n+ " % Out of 100 , You guys are Best pair in World !");
-} 
-if (n >= 50 && n <= 69){
-    alert("Hey "+p1+ " & " + p2 + " Your Love score is : "+n+ " % Out of 100 , Good Going Guys !");
-}
-if (n >= 30 && n <= 49){
-    alert("Hey "+p1+ " & " + p2 + " Your Love score is : "+n+ " % Out of 100 , Good Going Guys ! Cheer Up !");
-    alert(( " Just for fun, No Big calculations behind !! Dont Worry !!!"));
-}
-if (n <= 29) {
-    alert("Hey "+p1+ " & " + p2 + " Your Love score is : "+n+ " % Out of 100 !")
-    alert(( " Just for fun, No Big calculations behind !! Dont Worry !!!"));
-}
--->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator</title>
+    <title>Love Calculator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
             padding: 0;
             background-color: #8f4e4e;
+            background-image: url('lc.jpg'); /* Add the background image */
+            background-size:contain
+            border-bottom: 4px solid black;
         }
         .container {
             max-width: 400px;
@@ -79,7 +58,7 @@ if (n <= 29) {
 </head>
 <body>
     <div class="container">
-        <h1>BMI Calculator</h1>
+        <h1>Love Calculator</h1>
         <label for="p1">Enter Your Name:</label>
         <input type="text" id="p1" placeholder="Enter your Name">        
         <label for="p2">Enter Your Partner Name:</label>
@@ -91,31 +70,35 @@ if (n <= 29) {
     <script>
         function lovecalc() {
             // Get user input
-            var p1 = text.getElementById("p1");
-            var p2 = text.getElementById("p2");
+            var p1 = document.getElementById("p1").value;
+            var p2 = document.getElementById("p2").value;
+
+            if (!p1 || !p2) {
+                alert("Please enter both names!");
+                return;
+            }
+
             var n = Math.random() * 100;
             n = Math.floor(n + 1);
             var resultText = "";
+
             if (n >= 70) {
-                resultText="Hey "+p1+ " & " + p2 + " Your Love score is : "+n+ " % Out of 100 , You guys are Best pair in World !";
-            } 
-            if (n >= 50 && n <= 69){
-                resultText="Hey "+p1+ " & " + p2 + " Your Love score is : "+n+ " % Out of 100 , Good Going Guys !";
+                resultText = `Hey ${p1} & ${p2}, Your Love score is: ${n}% out of 100. You guys are the best pair in the world!`;
+            } else if (n >= 50 && n <= 69) {
+                resultText = `Hey ${p1} & ${p2}, Your Love score is: ${n}% out of 100. Good going, guys!`;
+            } else if (n >= 30 && n <= 49) {
+                resultText = `Hey ${p1} & ${p2}, Your Love score is: ${n}% out of 100. Cheer up! Just for fun, no big calculations behind this. Don't worry!`;
+            } else {
+                resultText = `Hey ${p1} & ${p2}, Your Love score is: ${n}% out of 100. Just for fun, no big calculations behind this. Don't worry!`;
             }
-            if (n >= 30 && n <= 49){
-                resultText="Hey "+p1+ " & " + p2 + " Your Love score is : "+n+ " % Out of 100 , Good Going Guys ! Cheer Up !";
-                resultText=" Just for fun, No Big calculations behind !! Dont Worry !!!";
-            }
-            if (n <= 29) {
-                resultText="Hey "+p1+ " & " + p2 + " Your Love score is : "+n+ " % Out of 100 !";
-                resultText=" Just for fun, No Big calculations behind !! Dont Worry !!!";
-            }
+
             // Display the result
             var resultDiv = document.getElementById("result");
             resultDiv.style.display = "block";
             resultDiv.textContent = resultText;
+            document.getElementById("p1").value = "";
+            document.getElementById("p2").value = "";
         }
     </script>
 </body>
 </html>
-

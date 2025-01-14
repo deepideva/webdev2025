@@ -31,9 +31,11 @@
 
         /* Main Content Layout */
         .main-content {
-            display: flex;
-            height: calc(100vh - 140px); /* Subtract header and footer height */
-        }
+    display: flex;
+    flex-wrap: wrap; /* Wraps content on smaller screens */
+    min-height: calc(100vh - 140px); /* Minimum height for the content area */
+    gap: 10px; /* Space between sections */
+}
 
         /* Left Frame (Buying Guide) */
         .left {
@@ -73,6 +75,7 @@
             background: linear-gradient(to right, #B0E0E6, #FFC0CB); /* Gradient background */
             padding: 10px;                  
             text-align: center;
+            overflow-y: auto; /* Scroll if content overflows */
         }
 
         .center h2 {
@@ -148,7 +151,9 @@
             background-color: #389292;
             text-align: center;
             padding: 10px;
-            margin-top: 20px;
+            margin-top: auto; /* Push footer to the bottom */
+            position: relative;
+            z-index: 1;
         }
 
         footer a {
@@ -206,6 +211,7 @@
             <ul>
                 <li><a href="bmi.html" target="_blank">BMI Calculator</a></li>
                 <li><a href="leapyear.html" target="_blank">Leap Year Check</a></li>
+                <li><a href="love_calc.html" target="_blank">Love Calculator</a></li>
             </ul>
             <div>
                 <img src="5.jpg" alt="Happy Pongal"> 
